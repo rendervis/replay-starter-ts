@@ -3,42 +3,39 @@ module.exports = {
     browser: true,
     es6: true,
   },
-  parser: "@typescript-eslint/parser",
+  parser: '@typescript-eslint/parser',
   parserOptions: {
-    ecmaVersion: 2018,
-    sourceType: "module",
+    ecmaVersion: 6,
+    sourceType: 'module',
+    ecmaFeatures: {
+      jsx: true,
+    },
   },
-  plugins: ["@typescript-eslint"],
-  extends: [
-    "plugin:@typescript-eslint/recommended",
-    "plugin:prettier/recommended",
-  ],
+  plugins: ['@typescript-eslint'],
+  extends: ['prettier/@typescript-eslint', 'plugin:prettier/recommended'],
   rules: {
-    "@typescript-eslint/no-use-before-define": [
-      "error",
-      { variables: false, functions: false },
-    ],
-    "@typescript-eslint/explicit-function-return-type": "off",
-    "@typescript-eslint/no-unused-vars": ["error", { argsIgnorePattern: "^_" }],
-    "prettier/prettier": [
-      "error",
+    '@typescript-eslint/no-use-before-define': ['error', { variables: false, functions: false }],
+    '@typescript-eslint/explicit-function-return-type': 'off',
+    '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
+    'prettier/prettier': [
+      'error',
       {
-        endOfLine: "auto",
+        endOfLine: 'auto',
       },
     ],
   },
   overrides: [
     {
-      files: ["*.js"],
+      files: ['*.js'],
       rules: {
-        "@typescript-eslint/no-var-requires": "off",
+        '@typescript-eslint/no-var-requires': 'off',
       },
     },
     {
-      files: ["**/__tests__/*.ts"],
+      files: ['**/__tests__/*.ts'],
       rules: {
-        "@typescript-eslint/no-explicit-any": "off",
-        "@typescript-eslint/no-non-null-assertion": "off",
+        '@typescript-eslint/no-explicit-any': 'off',
+        '@typescript-eslint/no-non-null-assertion': 'off',
       },
     },
   ],

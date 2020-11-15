@@ -1,5 +1,14 @@
+import { renderCanvas, RenderCanvasOptions } from '@replay/web';
+import { t } from '@replay/core';
+import { Game, gameProps } from '../src';
 
-import { renderCanvas } from "@replay/web";
-import { Game, gameProps, options } from "../src";
+const options: RenderCanvasOptions = {
+  loadingTextures: [
+    t.text({
+      color: 'black',
+      text: 'Loading ...',
+    }),
+  ],
+};
 
 renderCanvas(Game(gameProps), options);
