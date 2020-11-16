@@ -1,4 +1,4 @@
-import { makeSprite } from '@replay/core';
+import { makeSprite, t } from '@replay/core';
 import { WebInputs } from '@replay/web';
 import { iOSInputs } from '@replay/swift';
 import { Bird } from './bird';
@@ -18,10 +18,17 @@ export const Level = makeSprite<{}, LevelState, WebInputs | iOSInputs>({
     };
   },
 
-  loop({ state }) {
+  loop({ device, state }) {
+    const { inputs } = device;
+
     let { birdGravity, birdY } = state;
     birdGravity += 0.8;
     birdY -= birdGravity;
+    //inputs.pointer has information about the mouse
+    // or keyboard
+    if (inputs.pointer.justPressed || inputs.keysJustPressed[' ']) {
+      birdGravity = -12;
+    }
 
     return {
       birdGravity,
@@ -29,12 +36,19 @@ export const Level = makeSprite<{}, LevelState, WebInputs | iOSInputs>({
     };
   },
 
-  render({ state }) {
+  render({ state, device }) {
+    const { size } = device;
     return [
+      t.rectangle({
+        color: '#add8e6',
+        width: size.width + size.widthMargin * 2,
+        height: size.height + size.heightMargin * 2,
+      }),
       Bird({
         id: 'bird',
         x: birdX,
         y: state.birdY,
+        rotation: Math.max(-30, state.birdGravity * 3 - 30),
       }),
     ];
   },
