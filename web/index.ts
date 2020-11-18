@@ -9,6 +9,10 @@ const options: RenderCanvasOptions = {
       text: 'Loading ...',
     }),
   ],
+  assets: {
+    imageFileNames: ['bird.png'],
+    audioFileNames: ['boop.wav'],
+  },
 };
 
 renderCanvas(Game(gameProps), options);
