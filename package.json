@@ -19,7 +19,7 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "ci": "npm run lint && npm run build && npm run types && npm run test",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install && npm run build-web"
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install && npm run build-web && npm run serve"
   },
   "dependencies": {
     "@replay/core": "0.7.0",
