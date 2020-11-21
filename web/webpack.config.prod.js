@@ -7,7 +7,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
   entry: './web/index.ts',
-  mode: 'development',
+  mode: 'production',
   module: {
     rules: [
       {
@@ -39,11 +39,7 @@ module.exports = {
     filename: 'index.js',
     path: path.resolve(__dirname, 'dist'),
   },
-  devServer: {
-    host: '127.0.0.1',
-    // Codesandbox support
-    disableHostCheck: true,
-  },
+  devtool: 'none',
 };
 
 function getAssetNames() {

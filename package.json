@@ -14,12 +14,13 @@
     "types": "tsc --noEmit -p tsconfig.json",
     "build": "npm run build-web && npm run build-swift",
     "build-web": "webpack --config ./web/webpack.config.js",
+    "build-web-prod": "webpack --config ./web/webpack.config.prod.js",
     "build-swift": "webpack --config ./swift/webpack.config.js",
     "serve": "serve web/dist",
     "test": "jest",
     "test:watch": "jest --watch",
     "ci": "npm run lint && npm run build && npm run types && npm run test",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install && npm run build-web"
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install && npm run build-web-prod"
   },
   "dependencies": {
     "@replay/core": "0.7.0",
