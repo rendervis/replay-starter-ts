@@ -8,7 +8,7 @@
     "node": "12.19.0"
   },
   "scripts": {
-    "start": "serve",
+    "start": "serve -s ./web/dist",
     "dev": "webpack-dev-server --config ./web/webpack.config.js --open --mode=development",
     "lint": "eslint --ext .js,.ts .",
     "types": "tsc --noEmit -p tsconfig.json",
