@@ -8,24 +8,29 @@
     "node": "12.19.0"
   },
   "scripts": {
-    "start": "serve -s ./web/dist",
+    "start": "docusaurus start",
+    "build-web-prod": "docusaurus build",
+    "serve": "docusaurus serve",
+    "deploy": "docusaurus deploy",
     "dev": "webpack-dev-server --config ./web/webpack.config.js --open --mode=development",
     "lint": "eslint --ext .js,.ts .",
     "types": "tsc --noEmit -p tsconfig.json",
     "build": "npm run build-web && npm run build-swift",
     "build-web": "webpack --config ./web/webpack.config.js",
-    "build-web-prod": "webpack --config ./web/webpack.config.prod.js",
     "build-swift": "webpack --config ./swift/webpack.config.js",
-    "serve": "serve web/dist",
     "test": "jest",
     "test:watch": "jest --watch",
     "ci": "npm run lint && npm run build && npm run types && npm run test",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install && npm run build-web-prod"
   },
   "dependencies": {
+    "@docusaurus/core": "^2.0.0-alpha.68",
+    "@docusaurus/preset-classic": "^2.0.0-alpha.68",
     "@replay/core": "0.7.0",
     "@replay/swift": "0.7.0",
-    "@replay/web": "0.7.0"
+    "@replay/web": "0.7.0",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1"
   },
   "devDependencies": {
     "@replay/test": "0.7.0",
